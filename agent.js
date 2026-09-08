@@ -471,6 +471,10 @@ function reply(value) {
     return;
 }
 
+    reset();
+
+}
+
 document.querySelector('#composer').onsubmit = e => {
 
     e.preventDefault();
