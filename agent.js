@@ -400,7 +400,7 @@ function reply(value) {
 
         return;
     }
-}
+
     if (state.step === 'service') {
 
         state.data.service = value;
