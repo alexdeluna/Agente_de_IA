@@ -443,30 +443,33 @@ function reply(value) {
 
     if (state.step === 'confirm') {
 
-        if (value === 'Recomeçar') {
+    if (value === 'Recomeçar') {
 
-            reset();
-
-            return;
-        }
-
-        const t = create();
-
-        state.step = 'done';
-
-        ask(
-            `Chamado criado com sucesso.\n\nProtocolo: #2026-${t.id}\nSolicitante: ${t.requester}\nStatus: Aberto\nSLA: até ${t.sla} horas.`,
-            [
-                'Abrir outro chamado'
-            ]
-        );
+        reset();
 
         return;
     }
 
-    reset();
-}
+    const payload = {
+        requester: state.data.username,
+        service: state.data.service,
+        subcategory: state.data.subcategory,
+        priority: state.data.priority,
+        description: state.data.description
+    };
 
+    const json = JSON.stringify(payload);
+
+    const encoded = encodeURIComponent(json);
+
+    const PORTAL_URL =
+        "https://alexdeluna.github.io/portalitmsteste/";
+
+    window.location.href =
+        PORTAL_URL + "?payload=" + encoded;
+
+    return;
+}
 document.querySelector('#composer').onsubmit = e => {
 
     e.preventDefault();
