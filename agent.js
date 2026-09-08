@@ -470,6 +470,7 @@ function reply(value) {
 
     return;
 }
+
 document.querySelector('#composer').onsubmit = e => {
 
     e.preventDefault();
@@ -485,3 +486,5 @@ document.querySelector('#composer').onsubmit = e => {
 };
 
 reset();
+
+}
